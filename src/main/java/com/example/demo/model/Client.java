@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -34,6 +35,9 @@ public class Client {
             joinColumns = @JoinColumn(name = "clientid"),
             inverseJoinColumns = @JoinColumn(name = "friends"))
     private List<Client> friends;
+    
+    @OneToMany(mappedBy = "from")
+    private List<Transaction> transactions;
 
     public Client() {
 
