@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -39,6 +40,8 @@ public class Client {
     @OneToMany(mappedBy = "from")
     private List<Transaction> transactions;
 
+    @OneToOne()
+    Compte compte;
     public Client() {
 
     }
