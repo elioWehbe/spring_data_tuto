@@ -40,7 +40,7 @@ public class Client {
     @OneToMany(mappedBy = "from")
     private List<Transaction> transactions;
 
-    @OneToOne()
+    @OneToOne(optional = false)
     Compte compte;
     public Client() {
 
