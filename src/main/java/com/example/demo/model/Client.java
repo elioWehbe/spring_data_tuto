@@ -29,7 +29,10 @@ public class Client {
     private String prenom;
     @ManyToMany(fetch = FetchType.LAZY)
     @Fetch(value = FetchMode.JOIN)
-
+    @JoinTable(schema = "paymybuddy",
+            name = "connection",
+            joinColumns = @JoinColumn(name = "clientid"),
+            inverseJoinColumns = @JoinColumn(name = "friends"))
     private List<Client> friends;
 
     public Client() {
