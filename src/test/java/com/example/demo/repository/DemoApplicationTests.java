@@ -50,11 +50,27 @@ class DemoApplicationTests {
     }
     @Test
     public void virementEntreAmi(){
-        Client c = new Client("x", "x", "x@x.net");
-        Compte compte1=compteDAO.findByProprietaire(c);
-     Transaction t1=new Transaction(30,c,compte1);
+//        Client c = new Client("x", "x", "x@x.net");
+//        Client c1 = new Client("y", "y", "y@y.net");
+//        Compte compte1=compteDAO.findByProprietaire(c);
+//     Transaction t1=new Transaction(30,c,compte1);
+//     c.setFriends((List<Client>) c1);
 //     c1.setFriends((List<Client>) c);
+        Client c = new Client("Pascal3", "Fares", "pascal3.fares@lecnam.net");
+        Compte cpt = new Compte(c, 500);
+        c.setCompte(cpt);
+        clientDao.save(c);
+        Client c1 = new Client("Pascal4", "Fares", "pascal4.fares@lecnam.net");
+        Compte cpt1 = new Compte(c1, 0);
+        c1.setCompte(cpt1);
 
+
+        c1.getFriends().add(c);
+        clientDao.save(c1);
+        Client c2 = clientDao.findByEmail("pascal2.fares@lecnam.net");
+        assertThat(c2.getFriends().size()).isEqualTo(c1.getFriends().size());
+        Compte compte=compteDAO.findByProprietaire(c1);
+        Transaction t1=new Transaction(30,c,compte);
 
     }
 }
