@@ -2,8 +2,8 @@ package com.example.demo.repository;
 
 import com.example.demo.model.Client;
 import com.example.demo.model.Compte;
-import com.example.demo.repository.ClientDAO;
 import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +15,7 @@ class DemoApplicationTests {
     ClientDAO clientDao;
 
     @Test
+    @Ignore
     public void createAndGet() {
         Client c = new Client("Pascal", "Fares", "pascal.fares@lecnam.net");
         Compte cpt = new Compte(c, 0);
@@ -34,6 +35,8 @@ class DemoApplicationTests {
         Client c1 = new Client("Pascal2", "Fares", "pascal2.fares@lecnam.net");
         Compte cpt1 = new Compte(c1, 0);
         c1.setCompte(cpt1);
+        
+        
         c1.getFriends().add(c);
         clientDao.save(c1);
         Client c2 = clientDao.findByEmail("pascal2.fares@lecnam.net");
