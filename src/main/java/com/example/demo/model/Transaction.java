@@ -34,16 +34,18 @@ public class Transaction {
     @NotNull
     @ManyToOne(optional = false)
     private Compte to;
-    
-    public Transaction () {
-        
-    }
+
     public Transaction (int montant, Client from, Compte to) {
         this.montant = montant;
         this.from=from;
         this.to = to;
     }
-    
+
+    public Transaction() {
+
+    }
+
+
     public Long getId_transaction() {
         return id_transaction;
     }
